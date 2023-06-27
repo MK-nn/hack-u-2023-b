@@ -2,7 +2,9 @@
   "dependencies": {
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
+    "mic": "^2.1.2",
     "node-wav-player": "^0.2.0",
-    "openai": "^3.3.0"
+    "openai": "^3.3.0",
+    "vosk": "^0.3.39"
   }
 }
