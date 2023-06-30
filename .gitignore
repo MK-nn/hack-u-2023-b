@@ -2,6 +2,7 @@
 .DS_Store
 
 *.wav
+*.json
 # vosk model
 vosk-model-ja-0.22
 vosk-model-small-ja-0.22
