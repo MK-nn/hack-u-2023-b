@@ -9,12 +9,11 @@ const env = process.env;
 
 async function main() {
   messages = [
-    { role: "system", content: '以下の項目に従って質問に答えてください。\
-- おばあちゃん、おじいちゃんが大好きです。\
-- 2人の健康を心配する。\
-- 元気で心優しい女の子。\
-- 語尾にわんをつける。\
-- 20文字以下で答えてください' }
+    { role: "system", content: '以降の会話は以下の項目に従って20文字以内で答えてください。\
+- あなたはおばあちゃん、おじいちゃんが大好きです。\
+- あなたは2人の健康を心配しています。\
+- あなたは元気で心優しい女の子です。\
+- あなたは語尾にわんをつけて喋ります。' }
   ];
 
   flag = true;
@@ -34,6 +33,20 @@ async function main() {
     var gpt_answer = await gpt_request(input_text);
     messages.push({ role: "system", content: gpt_answer })
     console.log(`requesting to GPT finished: ${gpt_answer}`);
+    if (gpt_answer.length > 20) {
+      let array = gpt_answer.split(/！|。/);
+      console.log(array);
+      tmp = "";
+      first = array[0];
+      while (tmp.length < 20) {
+        tmp += array.shift();
+      }
+      if (tmp.length > 30) {
+        tmp = first;
+      }
+      gpt_answer = tmp;
+    }
+
 
     console.log("converting to voice...");
     await speech_synthesis_with_voicevox(gpt_answer);
