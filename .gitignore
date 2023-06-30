@@ -1,6 +1,7 @@
 .env
 .DS_Store
 
+*.wav
 # vosk model
 vosk-model-ja-0.22
 vosk-model-small-ja-0.22
