@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "node-record-lpcm16": "latest",
     "@google-cloud/speech": "^5.5.1",
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
