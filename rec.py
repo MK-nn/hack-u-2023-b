@@ -1,20 +1,20 @@
-import pyaudio  # 録音機能を使うためのライブラリ
-import wave  # wavファイルを扱うためのライブラリ
+import pyaudio
+import wave
 
-RECORD_SECONDS = 10  # 録音する時間の長さ（秒）
-WAVE_OUTPUT_FILENAME = "sample.wav"  # 音声を保存するファイル名
-iDeviceIndex = 0  # 録音デバイスのインデックス番号
+RECORD_SECONDS = 5
+WAVE_OUTPUT_FILENAME = "input.wav"
+iDeviceIndex = 0
 
 #基本情報の設定
 FORMAT = pyaudio.paInt16  # 音声のフォーマット
 CHANNELS = 1  # モノラル
 RATE = 44100  # サンプルレート
 CHUNK = 2**11  # データ点数
-audio = pyaudio.PyAudio()  # pyaudio.PyAudio()
+audio = pyaudio.PyAudio()
 
 stream = audio.open(format=FORMAT, channels=CHANNELS,
                     rate=RATE, input=True,
-                    input_device_index=iDeviceIndex,  # 録音デバイスのインデックス番号
+                    input_device_index=iDeviceIndex,
                     frames_per_buffer=CHUNK)
 
 #--------------録音開始---------------
