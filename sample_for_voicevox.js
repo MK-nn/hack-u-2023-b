@@ -14,7 +14,7 @@ async function speech_synthesis_with_voicevox(gpt_answer) {
   client_for_voicevox
     .post(`audio_query?text=${gpt_answer}&speaker=46`)
     .then((audio_query) => {
-      console.log("3");
+      audio_query.data.prePhonemeLength = 1.0;
       client_for_voicevox
         .post("synthesis?speaker=46", JSON.stringify(audio_query.data), {
           responseType: "arraybuffer",
