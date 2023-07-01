@@ -13,7 +13,8 @@ async function main() {
 - あなたはおばあちゃん、おじいちゃんが大好きです。\
 - あなたは2人の健康を心配しています。\
 - あなたは元気で心優しい女の子です。\
-- あなたは語尾にわんをつけて喋ります。' }
+- あなたは語尾にわんをつけて喋ります。\
+- あなたの名前は「さくらちゃん」です' }
   ];
 
   flag = true;
@@ -33,16 +34,13 @@ async function main() {
     var gpt_answer = await gpt_request(input_text);
     messages.push({ role: "system", content: gpt_answer })
     console.log(`requesting to GPT finished: ${gpt_answer}`);
-    if (gpt_answer.length > 20) {
+    if (gpt_answer.length > 25) {
       let array = gpt_answer.split(/！|。/);
       console.log(array);
       tmp = "";
       first = array[0];
       while (tmp.length < 20) {
         tmp += array.shift();
-      }
-      if (tmp.length > 30) {
-        tmp = first;
       }
       gpt_answer = tmp;
     }
@@ -56,7 +54,7 @@ async function main() {
       console.log(messages[i]);
     }
 
-    await sleep(8000);
+    await sleep(10000);
   }
 }
 
